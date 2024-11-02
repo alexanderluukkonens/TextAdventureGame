@@ -1,11 +1,11 @@
 namespace TextAdventureGame;
 
-public class Player
+public class Player 
 {
     public int Health { get; set; }
     public List<Item> Inventory { get; private set; }
     public int CompletedWorlds { get; set; }
-    private Random random;
+    private Random random; 
 
     public Player()
     {
@@ -22,7 +22,7 @@ public class Player
 
     public int GetRandomDamage()
     {
-        int baseDamage = 1;
+        int baseDamage = 3;
         foreach (Item item in Inventory)
         {
             baseDamage += item.Damage;
@@ -38,28 +38,28 @@ public class Player
         }
     }
 
-    public void ShowInventory()
-    {
-        Console.Clear();
-        ConsoleHelper.DrawBox("INVENTORY");
+    // public void ShowInventory()
+    // {
+    //     Console.Clear();
+    //     ConsoleHelper.DrawBox("INVENTORY");
 
-        if (Inventory.Count == 0)
-        {
-            Console.WriteLine("Your inventory is empty!");
-            return;
-        }
+    //     if (Inventory.Count == 0)
+    //     {
+    //         Console.WriteLine("Your inventory is empty!");
+    //         return;
+    //     }
 
-        foreach (Item item in Inventory)
-        {
-            Console.WriteLine($"{item.Name} (Damage: {item.Damage})");
-        }
-    }
+    //     foreach (Item item in Inventory)
+    //     {
+    //         Console.WriteLine($"{item.Name} (Damage: {item.Damage})");
+    //     }
+    // }
 
-    public void ShowStatus()
-    {
-        Console.Clear();
-        ConsoleHelper.DrawBox("PLAYERSTATUS");
-        Console.WriteLine($"Health: {Health}/100");
-        Console.WriteLine($"Completed worlds: {CompletedWorlds}");
-    }
+    // public void ShowStatus()
+    // {
+    //     Console.Clear();
+    //     ConsoleHelper.DrawBox("PLAYERSTATUS");
+    //     Console.WriteLine($"Health: {Health}/100");
+    //     Console.WriteLine($"Completed worlds: {CompletedWorlds}");
+    // }
 }

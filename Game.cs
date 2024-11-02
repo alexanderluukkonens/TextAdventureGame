@@ -46,27 +46,17 @@ public class Game
 
     public void Run()
     {
-        ConsoleHelper.MenuBox();
+        InterfaceDisplay.MenuBox();
         Thread.Sleep(7000);
         while (isRunning)
         {
-            ShowMainMenu();
+            InterfaceDisplay.ShowMainMenu();
             string choice = Console.ReadLine()!;
             HandleMenuChoice(choice);
         }
     }
 
-    private void ShowMainMenu()
-    {
-        Console.Clear();
-        ConsoleHelper.DrawBox("ADVENTUREGAME");
-        Console.WriteLine("1. Instructions");
-        Console.WriteLine("2. Explore worlds");
-        Console.WriteLine("3. Show inventory");
-        Console.WriteLine("4. Show Playerstatus");
-        Console.WriteLine("5. End game");
-        Console.WriteLine("\nChoose an option (1-5):");
-    }
+  
 
     private void HandleMenuChoice(string choice)
     {
@@ -75,18 +65,18 @@ public class Game
             switch (choice)
             {
                 case "1":
-                    ConsoleHelper.Instructions();
+                    InterfaceDisplay.Instructions();
                     ConsoleHelper.WaitForKey();
                     break;
                 case "2":
                     ExploreWorlds();
                     break;
                 case "3":
-                    player.ShowInventory();
+                    InterfaceDisplay.ShowInventory(player.Inventory);
                     ConsoleHelper.WaitForKey();
                     break;
                 case "4":
-                    player.ShowStatus();
+                    InterfaceDisplay.ShowStatus(player.Health, player.CompletedWorlds);
                     ConsoleHelper.WaitForKey();
                     break;
                 case "5":
@@ -178,49 +168,5 @@ public class Game
         ConsoleHelper.WaitForKey();
     }
 
-    private void FightMonster(Monster monster)
-    {
-        while (monster.Health > 0 && player.Health > 0)
-        {
-            Console.Clear();
-            ConsoleHelper.DrawBox("BATTLE");
-            Console.WriteLine($"Your health: {player.Health}");
-            Console.WriteLine($"{monster.Name}s health: {monster.Health}");
-            Console.WriteLine("\n1. Attack");
-            Console.WriteLine("2. Heal");
-
-            string choice = Console.ReadLine()!;
-            Console.Clear();
-
-            if (choice == "1")
-            {
-                int damage = player.GetRandomDamage();
-                monster.Health -= damage;
-                Console.WriteLine($"\nYou did {damage} damage!");
-                Thread.Sleep(1500);
-            }
-            else if (choice == "2")
-            {
-                player.Heal();
-                Console.WriteLine("\nYou healed 20 HP!");
-                Thread.Sleep(1500);
-            }
-
-            if (monster.Health > 0)
-            {
-                int monsterDamage = monster.GetDamage();
-                player.Health -= monsterDamage;
-                Console.WriteLine($"{monster.Name} did {monsterDamage} damage on you!");
-                Thread.Sleep(1500);
-            }
-
-            if (player.Health <= 0)
-            {
-                Console.WriteLine("\nYou lost the battle!");
-                player.Health = 100;
-                Thread.Sleep(1500);
-                break;
-            }
-        }
-    }
+    
 }
