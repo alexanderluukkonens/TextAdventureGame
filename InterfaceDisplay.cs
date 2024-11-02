@@ -8,8 +8,10 @@ public class InterfaceDisplay
         ConsoleHelper.DrawBox("BATTLE");
         Console.WriteLine($"Your health: {player.Health}");
         Console.WriteLine($"{monster.Name}s health: {monster.Health}");
-        Console.WriteLine("\n1. Attack");
-        Console.WriteLine("2. Heal");
+        Console.WriteLine("\n1. - Attack");
+        Console.WriteLine("2. - Heal");
+        Console.WriteLine("3. - Flee");
+        Console.WriteLine("\n4. 'Help'");
     }
 
     public static void ShowInventory(List<Item> inventory)
@@ -59,7 +61,7 @@ public class InterfaceDisplay
     {
         Console.Clear();
         ConsoleHelper.DrawBox("ADVENTUREGAME");
-        Console.WriteLine("1. Instructions");
+        Console.WriteLine("1. About");
         Console.WriteLine("2. Explore worlds");
         Console.WriteLine("3. Show inventory");
         Console.WriteLine("4. Show Playerstatus");

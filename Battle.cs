@@ -2,32 +2,52 @@ namespace TextAdventureGame;
 
 public class Battle
 {
-    private void FightMonster(Monster monster)
+    public static void FightMonster(Monster monster, Player player, World world)
     {
-        
-        while (monster.Health > 0 && player.Health > 0)
+        while (true)
         {
             InterfaceDisplay.Battle(player, monster);
             string choice = Console.ReadLine()!;
-            
 
             if (choice == "1")
             {
                 int damage = player.GetRandomDamage();
                 monster.Health -= damage;
                 Console.WriteLine($"\nYou did {damage} damage!");
-                Thread.Sleep(1500);
+                Thread.Sleep(3000);
             }
             else if (choice == "2")
             {
                 player.Heal();
                 Console.WriteLine("\nYou healed 20 HP!");
-                Thread.Sleep(1500);
+                Thread.Sleep(3000);
+                continue;
+            }
+            else if (choice == "3")
+            {
+                Console.WriteLine("\nYou ran like a coward!");
+                Thread.Sleep(3000);
+                return;
+            }
+            else if (choice == "4")
+            {
+                Console.WriteLine(
+                    """
+
+                    Help:
+
+                    Attack - Attack the enemy and deal random damage.
+                    Heal   - Heal for 20 health. Does not end your turn.
+                    Flee   - Escape combat.
+                    """
+                );
+                Thread.Sleep(3000);
+                continue;
             }
             else
             {
-                Console.WriteLine("Press 1 or 2");
-                Thread.Sleep(1500);
+                Console.WriteLine("Press 1 - 4");
+                Thread.Sleep(3000);
                 continue;
             }
 
@@ -44,7 +64,20 @@ public class Battle
                 Console.WriteLine("\nYou lost the battle!");
                 player.Health = 100;
                 Thread.Sleep(1500);
-                break;
+                return;
+            }
+
+            else if (monster.Health <= 0)
+            {
+                world.MonsterDefeated = true;
+                player.CompletedWorlds++;
+                Console.Clear();
+                Console.WriteLine($"\nCongratulations! You have defeated {world.Monster.Name}!");
+                Thread.Sleep(1500);
+                Console.WriteLine($"\nYou gained: {world.Item.Name} to your inventory!");
+                player.CollectItem(world.Item);
+                Thread.Sleep(1500);
+                return;
             }
         }
     }
