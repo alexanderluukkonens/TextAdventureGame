@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = TextAdventureGame
-build_property.ProjectDir = C:\Users\alexa\Code\TextAdventureGame\
+build_property.ProjectDir = C:\Users\alexa\code\TextAdventureGame\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

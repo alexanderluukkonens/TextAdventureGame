@@ -4,17 +4,17 @@ public class Game
 {
     Player player = new Player();
     
-    bool isRunning = true;
+    public static bool isRunning = true;
 
     public void Run()
     {
         InterfaceDisplay.MenuBox();
-        Thread.Sleep(7000);
+        Thread.Sleep(3000);
         while (isRunning)
         {
             InterfaceDisplay.ShowMainMenu();
             string choice = Console.ReadLine()!;
-            isRunning = Menu.HandleMenuChoice(choice, player);
+            isRunning = Menu.MainMenu(choice, player);
         }
     }
 }

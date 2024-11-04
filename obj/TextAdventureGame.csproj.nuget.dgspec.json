@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\alexa\\code\\textadventuregame\\TextAdventureGame.csproj": {}
+    "C:\\Users\\alexa\\code\\TextAdventureGame\\TextAdventureGame.csproj": {}
   },
   "projects": {
-    "C:\\Users\\alexa\\code\\textadventuregame\\TextAdventureGame.csproj": {
+    "C:\\Users\\alexa\\code\\TextAdventureGame\\TextAdventureGame.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\alexa\\code\\textadventuregame\\TextAdventureGame.csproj",
+        "projectUniqueName": "C:\\Users\\alexa\\code\\TextAdventureGame\\TextAdventureGame.csproj",
         "projectName": "TextAdventureGame",
-        "projectPath": "C:\\Users\\alexa\\code\\textadventuregame\\TextAdventureGame.csproj",
+        "projectPath": "C:\\Users\\alexa\\code\\TextAdventureGame\\TextAdventureGame.csproj",
         "packagesPath": "C:\\Users\\alexa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\alexa\\code\\textadventuregame\\obj\\",
+        "outputPath": "C:\\Users\\alexa\\code\\TextAdventureGame\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\alexa\\AppData\\Roaming\\NuGet\\NuGet.Config"

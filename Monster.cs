@@ -14,7 +14,7 @@ public class Monster
         BaseDamage = baseDamage;
     }
 
-    public int GetDamage()
+    public int GetRandomDamage()
     {
         return random.Next(BaseDamage - 2, BaseDamage + 14);
     }

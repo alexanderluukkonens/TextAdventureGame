@@ -2,42 +2,40 @@ namespace TextAdventureGame;
 
 public class WorldManager
 {
-    public static List<World> worlds = new List<World>       
+    public static List<World> worlds = new List<World>
     {
         new World(
             "Forest",
             "A dark and mysterious forest",
-            new Monster("Forestgiant", 30, 5),
-            new Item("Woodsword", 5)
+            new Monster("Forest Giant", 30, 5),
+            new Item("Wooden Sword", 5, 2)
         ),
-
         new World(
-            "The Cave",
+            "Cave",
             "A deep and cold cave",
-            new Monster("Cave-troll", 50, 8),
-            new Item("Stoneclub", 8)
+            new Monster("Cave Troll", 50, 8),
+            new Item("Stone Club", 8, 3)
         ),
-
         new World(
-            "The mountain",
-            "A high and dangerous mountin",
+            "Mountain",
+            "A high and dangerous mountain",
             new Monster("Drake", 80, 12),
-            new Item("Magic sword", 12)
-        )
+            new Item("NaN", 0, 4)
+        ),
     };
 
     private static void ExploreWorld(World world, Player player)
     {
-        Console.Clear();
-        ConsoleHelper.DrawBox(world.Name);
-        Console.WriteLine(world.Description);
+        InterfaceDisplay.WorldInfo(world);
 
         if (!world.MonsterDefeated)
         {
-            Console.WriteLine($"\nA monster approaches: {world.Monster.Name}!");
-            Battle.FightMonster(world.Monster, player, world);
+            Menu.BattleMenu(player, world);
+            if (!Game.isRunning)
+            {
+                return;
+            }
         }
-
         else
         {
             Console.WriteLine("\nYou have already explored this world.");
@@ -51,8 +49,12 @@ public class WorldManager
         bool exploring = true;
         while (exploring)
         {
+            if (!Game.isRunning)
+            {
+                break;
+            }
             WorldAvailable(player);
-            
+
             string choice = Console.ReadLine()!;
             if (choice == "4")
             {
@@ -78,8 +80,7 @@ public class WorldManager
             }
             else
             {
-                Console.Clear();
-                Console.WriteLine("Enter 1-4");
+                Console.WriteLine("Invalid selection. Try again.");
                 ConsoleHelper.WaitForKey();
                 continue;
             }
@@ -94,9 +95,10 @@ public class WorldManager
         for (int i = 0; i < worlds.Count; i++)
         {
             string availability = i <= player.CompletedWorlds ? "Available" : "Locked";
-            Console.WriteLine($"{i + 1}. {worlds[i].Name} - {availability}");
+            Console.WriteLine($"[{i + 1}] {worlds[i].Name} - {availability}");
         }
-        Console.WriteLine("4. Return to the main menu");
-        Console.WriteLine("\nChoose a world (1-4):");
+        Console.WriteLine("[4] Return to the main menu");
+        Console.WriteLine("\nChoose a world from the list.");
+        Console.Write("\nChoice: ");
     }
 }
